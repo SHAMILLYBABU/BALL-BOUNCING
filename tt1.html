@@ -1,0 +1,65 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function()
+{
+$('#f').submit(function(e)
+{
+e.preventDefault();
+var n=$('#name').val();
+var email=$('#email').val();
+var pa=$('#pass').val();
+var con=$('#cop').val();
+if(n.length<1)
+{
+$("#name").after("This field is required").css("background-color","green");
+}
+else
+{
+var x=/^[a-zA-Z]{3,16}$/;
+var valid1=x.test(n);
+if(!valid1)
+{
+$('#name').after("Sorry your name is not valid").css("background-color","green");
+}
+}
+if(email.length<1)
+{
+$("#email").after("This field is required").css("background-color","black");
+}
+if(pa.length<1)
+{
+$("#pass").after("This field is required").css("background-color","red");
+}
+else if(pa.length<8)
+{
+$("#pass").after("password must be 8 characters").css("background-color","red");
+}
+if(con.length<1)
+{
+$("#cop").after("This field is required").css("background-color","blue");
+}
+else if(pa!=con)
+{
+$("#cop").after("Mismatched password").css("background-color","blue");
+}
+});
+});
+</script>
+</head>
+<body>
+<form id="f" method="post" action="">
+Name:<input type="text" id="name">
+<br>
+Email:<input type="email" id="email">
+<br>
+Password:<input type="password" id="pass"><br>
+Confirm Password:<input type="password" id="cop"><br>
+gender:
+<input type="radio" name="gender" value="Male" checked>Male
+<input type="radio" name="gender" value"Female">Female<br>
+<input type="submit" value="SUBMIT">
+</form>
+</body>
+</html>
